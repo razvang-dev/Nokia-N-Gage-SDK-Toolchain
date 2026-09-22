@@ -22,14 +22,28 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/ngage-release
+
           gh release download v1.0.0 \
-            --pattern 'Nokia_NGage_SDK_Toolchain_v1.0.0_Linux_x86_64.tar.xz' \
+            --pattern '*.tar.xz' \
             --dir /tmp/ngage-release
+
+          echo "Downloaded release files:"
+          ls -lah /tmp/ngage-release
 
       - name: Extract toolchain into repository
         run: |
           set -euo pipefail
-          tar -xJf /tmp/ngage-release/Nokia_NGage_SDK_Toolchain_v1.0.0_Linux_x86_64.tar.xz \
+
+          archive="$(find /tmp/ngage-release -maxdepth 1 -type f -name '*.tar.xz' -print -quit)"
+
+          if [ -z "$archive" ]; then
+            echo "ERROR: No .tar.xz release asset was found."
+            exit 1
+          fi
+
+          echo "Using archive: $archive"
+
+          tar -xJf "$archive" \
             --strip-components=1 \
             -C .
 
@@ -38,9 +52,11 @@ jobs:
       - name: Verify GitHub file-size limit
         run: |
           set -euo pipefail
+
           oversized="$(find . -path './.git' -prune -o -type f -size +99M -print)"
+
           if [ -n "$oversized" ]; then
-            echo 'Files too large for normal GitHub storage:'
+            echo "Files too large for normal GitHub storage:"
             printf '%s\n' "$oversized"
             exit 1
           fi
@@ -48,13 +64,14 @@ jobs:
       - name: Commit complete toolchain tree
         run: |
           set -euo pipefail
+
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
           git add -f -A
 
           if git diff --cached --quiet; then
-            echo 'Repository is already populated.'
+            echo "Repository is already populated."
             exit 0
           fi
 
