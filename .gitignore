@@ -1,0 +1,25 @@
+# Generated application builds
+examples/*/build/
+build/
+out/
+output/
+
+# Compiler/linker intermediates
+*.o
+*.obj
+*.map
+*.bas
+*.exp
+*.exp2
+*.in
+*.rpp
+*.rsg
+
+# Temporary/editor files
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+__pycache__/
