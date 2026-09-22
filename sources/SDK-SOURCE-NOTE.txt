@@ -1,0 +1,5 @@
+The installed SDK tree in ../sdk/ was reconstructed from the supplied Series 60 6.1 SDK archives.
+The original large sdk-linux.zip/sdk-main.zip inputs are intentionally not duplicated inside this bundle because the complete extracted SDK is already present and duplicating both adds ~294 MB before compression.
+Original archive names used during reconstruction:
+- sdk-linux.zip
+- sdk-main.zip

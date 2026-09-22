@@ -1,0 +1,3 @@
+#!/bin/sh
+# Print FIXPROTO_DEFINES needed by fixproto.
+echo ''

@@ -1,0 +1,1 @@
+../sdk/Series60/Epoc32/Include/mda/common/base.h

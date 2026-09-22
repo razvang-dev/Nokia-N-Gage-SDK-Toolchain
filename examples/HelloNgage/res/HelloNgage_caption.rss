@@ -1,0 +1,2 @@
+#include <apcaptionfile.rh>
+RESOURCE CAPTION_DATA { caption="Hello N-Gage"; shortcaption="HelloNgage"; }

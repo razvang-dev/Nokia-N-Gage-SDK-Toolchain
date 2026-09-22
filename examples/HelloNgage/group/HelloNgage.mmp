@@ -1,0 +1,14 @@
+TARGET        HelloNgage.app
+TARGETTYPE    app
+UID           0x100039CE 0x1020F4AE
+TARGETPATH    \System\Apps\HelloNgage
+SOURCEPATH    ..\src
+SOURCE        hello.cpp
+SOURCE        hello_application.cpp
+SOURCE        hello_document.cpp
+SOURCE        hello_appui.cpp
+SOURCE        hello_view.cpp
+USERINCLUDE   ..\src
+SYSTEMINCLUDE \epoc32\include
+RESOURCE      ..\res\hello.rss
+LIBRARY       euser.lib apparc.lib cone.lib eikcore.lib avkon.lib ws32.lib

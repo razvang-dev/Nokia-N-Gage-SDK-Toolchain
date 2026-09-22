@@ -1,0 +1,7 @@
+NAME HENG
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+RESOURCE RSS_SIGNATURE {}
+RESOURCE TBUF { buf = "HelloNgage"; }
+RESOURCE EIK_APP_INFO { status_pane = 0; cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT; }
